@@ -22,14 +22,38 @@ const token = params.get("token")
 
 function resetPassword(){
 
-    const newPassword = document.getElementById("newPassword").value
-    const confirmPassword = document.getElementById("confirmPassword").value
+    const newPassword =
+    document.getElementById("newPassword").value
     
-    if(newPassword !== confirmPassword){
-    alert("Passwords do not match")
+    const confirmPassword =
+    document.getElementById("confirmPassword").value
+    
+    const error =
+    document.getElementById("error")
+    
+    // password rule
+    const strongPassword =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/
+    
+    // weak password check
+    if(!strongPassword.test(newPassword)){
+    
+    error.innerText =
+    "Password must contain 8 characters, 1 uppercase, 1 number and 1 special character"
+    
     return
     }
-    console.log("TOKEN:", token)
+    
+    // confirm password check
+    if(newPassword !== confirmPassword){
+    
+    error.innerText = "Passwords do not match"
+    
+    return
+    }
+    
+    // clear error
+    error.innerText = ""
     
     fetch("http://localhost:5000/api/auth/reset-password",{
     
@@ -39,10 +63,7 @@ function resetPassword(){
     "Content-Type":"application/json"
     },
     
-    body:JSON.stringify({
-    token: token,
-    newPassword: newPassword
-    })
+    body:JSON.stringify({token,newPassword})
     
     })
     .then(res=>res.json())
