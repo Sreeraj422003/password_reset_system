@@ -147,12 +147,9 @@ The reset password page validates password strength to ensure:
 
 ## Video Demonstration
 
-Add your video explanation link here:
+Demonstration video link
 
-Example:
-
-https://drive.google.com/your-video-link
-
+https://drive.google.com/file/d/1C5FnoML-VZpl-WnNVUgOqsYlZ0eAmL12/view?usp=sharing
 ---
 
 ## Author
